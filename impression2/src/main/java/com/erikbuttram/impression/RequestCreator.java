@@ -6,6 +6,7 @@ import android.graphics.SurfaceTexture;
 import android.view.Surface;
 
 import com.erikbuttram.impression.enums.CameraPosition;
+import com.erikbuttram.impression.session.CameraSession;
 
 import java.io.IOException;
 
@@ -21,6 +22,11 @@ public class RequestCreator {
     private CameraPosition mPosRequested;
     private Object mPreviewSurface;
 
+    public static interface CameraCallback {
+        void onSuccess(CameraSession session);
+        void onError(Throwable error);
+    }
+
     public void togglePosition() {
         //TODO:  this
     }
@@ -33,7 +39,6 @@ public class RequestCreator {
     private static Builder with(Context context) {
         return new Builder(context);
     }
-
 
     private static class Builder {
 
@@ -67,7 +72,7 @@ public class RequestCreator {
         }
 
         /**
-         *
+         * Provides the mechanism to receive a valid {@link com.erikbuttram.impression.session.CameraSession}
          * @throws IllegalArgumentException
          * @throws  java.io.IOException
          */
