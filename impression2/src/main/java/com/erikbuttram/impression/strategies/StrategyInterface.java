@@ -8,5 +8,5 @@ import com.erikbuttram.impression.session.CameraSession;
  * Created by erikb on 6/27/15.
  */
 public interface StrategyInterface {
-     CameraSession execute(RequestCreator.CameraCallback listener, CameraPosition pos);
+     void execute(RequestCreator.CameraCallback listener, CameraPosition pos);
 }
